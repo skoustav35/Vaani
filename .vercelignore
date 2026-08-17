@@ -1,0 +1,6 @@
+/nm2
+nm2
+node_modules
+dist
+.tmp
+*.log

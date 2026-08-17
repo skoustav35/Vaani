@@ -1,0 +1,27 @@
+{
+  "name": "nm2-vendor",
+  "private": true,
+  "dependencies": {
+    "@supabase/supabase-js": "^2.99.1",
+    "@tanstack/react-query": "^5",
+    "@tanstack/react-virtual": "^3",
+    "framer-motion": "^12.35.0",
+    "gsap": "^3",
+    "katex": "^0.16",
+    "lucide-react": "^0.577.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-markdown": "^10",
+    "react-router-dom": "^7.13.1",
+    "rehype-highlight": "^7",
+    "rehype-katex": "^7",
+    "remark-gfm": "^4",
+    "remark-math": "^6",
+    "zustand": "^5"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "playwright-core": "^1.62.1"
+  }
+}

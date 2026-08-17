@@ -1,0 +1,167 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* ── CLASSIC INDIAN AYURVEDIC PALETTE ─────────────────────── */
+  --color-neem: #2c5f2d;
+  --color-neem-deep: #1e4620;
+  --color-neem-loud: #3e7c40;
+  --color-neem-mist: #dcead9;
+
+  --color-sandalwood: #f4ebd0;
+  --color-cream: #fbf6e4;
+  --color-sand-200: #efe3c6;
+  --color-sand-300: #e3d2ac;
+  --color-sand-400: #d0b988;
+
+  --color-turmeric: #f0b90b;
+  --color-turmeric-deep: #c79409;
+  --color-turmeric-soft: #f8d564;
+
+  --color-copper: #b87333;
+  --color-copper-soft: #ce9463;
+  --color-copper-deep: #8a5322;
+  --color-copper-faint: #e2c29a;
+
+  --color-charcoal: #1a1a1a;
+  --color-charcoal-soft: #4a4232;
+  --color-charcoal-mute: #8a7e66;
+
+  --color-midnight: #0f172a;
+  --color-midnight-900: #0c1322;
+  --color-midnight-800: #182239;
+  --color-midnight-700: #22304f;
+  --color-midnight-600: #2e3f64;
+  --color-glow: #f2c98d;
+  --color-glow-dim: #d9a568;
+
+  --font-serif: "Tiro Devanagari Sanskrit", Georgia, serif;
+  --font-sans: "Manrope", system-ui, sans-serif;
+
+  --shadow-soft: 0 1px 2px rgba(26, 26, 26, 0.06), 0 10px 30px -12px rgba(26, 26, 26, 0.22);
+  --shadow-lift: 0 2px 4px rgba(26, 26, 26, 0.08), 0 24px 56px -14px rgba(26, 26, 26, 0.30);
+  --shadow-turmeric: 0 4px 24px -4px rgba(240, 185, 11, 0.5);
+  --shadow-copperline: inset 0 0 0 1px rgba(184, 115, 51, 0.35);
+
+  --animate-mandala-spin: mandala-spin 2.6s linear infinite;
+  --animate-breathe: breathe 3.2s ease-in-out infinite;
+
+  @keyframes mandala-spin {
+    to { transform: rotate(360deg); }
+  }
+  @keyframes breathe {
+    0%, 100% { opacity: 0.45; transform: scale(0.96); }
+    50% { opacity: 1; transform: scale(1.04); }
+  }
+}
+
+html, body, #root { height: 100%; }
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  background-color: var(--color-sandalwood);
+  color: var(--color-charcoal);
+}
+.dark body { background-color: var(--color-midnight); color: #efe6d2; }
+
+::selection { background: var(--color-turmeric); color: var(--color-charcoal); }
+
+/* ── Organic chat bubble radii ───────────────────────────────── */
+.bubble-self { border-radius: 20px 20px 6px 20px; }
+.bubble-other { border-radius: 20px 20px 20px 6px; }
+
+/* ── Chat backdrop: drifting botanicals over a subtle weave ──── */
+.chat-weave {
+  background-color: var(--color-sandalwood);
+  background-image:
+    radial-gradient(340px 340px at 8% 12%, rgba(44, 95, 45, 0.05), transparent 70%),
+    radial-gradient(420px 420px at 92% 80%, rgba(184, 115, 51, 0.06), transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%23b87333' stroke-width='0.8' opacity='0.16'%3E%3Ccircle cx='36' cy='36' r='3.4'/%3E%3Ccircle cx='36' cy='36' r='10' stroke-dasharray='2 5'/%3E%3Ccircle cx='36' cy='36' r='17'/%3E%3C/g%3E%3C/svg%3E");
+}
+.dark .chat-weave {
+  background-color: var(--color-midnight-900);
+  background-image:
+    radial-gradient(340px 340px at 8% 12%, rgba(240, 185, 11, 0.04), transparent 70%),
+    radial-gradient(420px 420px at 92% 80%, rgba(184, 115, 51, 0.05), transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%23f2c98d' stroke-width='0.8' opacity='0.10'%3E%3Ccircle cx='36' cy='36' r='3.4'/%3E%3Ccircle cx='36' cy='36' r='10' stroke-dasharray='2 5'/%3E%3Ccircle cx='36' cy='36' r='17'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ── Scrollbars ──────────────────────────────────────────────── */
+.slim-scroll::-webkit-scrollbar { width: 7px; height: 7px; }
+.slim-scroll::-webkit-scrollbar-track { background: transparent; }
+.slim-scroll::-webkit-scrollbar-thumb { background: var(--color-sand-300); border-radius: 99px; }
+.slim-scroll::-webkit-scrollbar-thumb:hover { background: var(--color-copper-soft); }
+.dark .slim-scroll::-webkit-scrollbar-thumb { background: var(--color-midnight-600); }
+.slim-scroll { scrollbar-width: thin; scrollbar-color: var(--color-sand-300) transparent; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+/* ── Warm glass for overlays ─────────────────────────────────── */
+.ayur-glass {
+  background: linear-gradient(165deg, rgba(251, 246, 228, 0.92), rgba(244, 235, 208, 0.86));
+  backdrop-filter: blur(16px) saturate(1.12);
+  -webkit-backdrop-filter: blur(16px) saturate(1.12);
+  border: 1px solid rgba(184, 115, 51, 0.28);
+}
+.dark .ayur-glass {
+  background: linear-gradient(165deg, rgba(24, 34, 57, 0.92), rgba(12, 19, 34, 0.88));
+  border-color: rgba(242, 201, 141, 0.22);
+}
+
+/* ── Defining copper ruling lines (manuscript margins) ──────── */
+.copper-rule {
+  border-color: rgba(184, 115, 51, 0.30);
+}
+.dark .copper-rule {
+  border-color: rgba(242, 201, 141, 0.18);
+}
+
+.text-gilaki-gold {
+  background: linear-gradient(100deg, #8a5322, #b87333 40%, #f0b90b 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.dark .text-gilaki-gold {
+  background: linear-gradient(100deg, #f2c98d, #f0b90b 70%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ── Snehra streaming state ──────────────────────────────────── */
+.blink-cursor {
+  display: inline-block;
+  width: 2.5px;
+  height: 1.05em;
+  margin-left: 2px;
+  border-radius: 2px;
+  vertical-align: -0.14em;
+  background: linear-gradient(180deg, #f0b90b, #b87333);
+  animation: cursor-blink 0.9s steps(2, end) infinite;
+}
+@keyframes cursor-blink {
+  50% { opacity: 0; }
+}
+.snehra-streaming {
+  box-shadow: 0 0 0 1.5px rgba(240, 185, 11, 0.55), 0 0 26px rgba(240, 185, 11, 0.20) !important;
+}
+.stream-tide {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(110deg, transparent 30%, rgba(240, 185, 11, 0.10) 50%, transparent 70%);
+  background-size: 240% 100%;
+  animation: tide 1.6s linear infinite;
+}
+@keyframes tide {
+  from { background-position: 130% 0; }
+  to { background-position: -130% 0; }
+}
+
+/* bubble tails follow the two moods */
+.dark { --tail-other: #182239; }
